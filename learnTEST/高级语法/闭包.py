@@ -9,8 +9,9 @@ def curve_pre():
     b = 4
 
     def curve(x):
-        return a*b*x
         print('this is curve')
+        return a*b*x
+
     return curve
 
 
