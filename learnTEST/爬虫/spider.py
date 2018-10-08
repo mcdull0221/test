@@ -3,7 +3,7 @@ import re
 
 
 class Spider:
-    url = 'https://www.huya.com/g/lol'
+    url = 'https://www.huya.com/g/3'
     root_pattern = '<span class="txt">([\s\S]*?</i>)</span>'      # 非贪婪模式
     name_pattern = '<i class="nick" title="([\s\S]*?)">'
     number_pattern = '<i class="js-num">([\s\S]*?)</i>'
