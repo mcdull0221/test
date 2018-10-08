@@ -4,11 +4,11 @@ import json
 class RunMain:
 
     def send_get(self, url, data):
-        res = requests.get(url=url, data=data).json()
+        res = requests.get(url=url, data=data).text
         return res
 
     def send_post(self, url, data):
-        res = requests.post(url=url, data=data).json()
+        res = requests.post(url=url, data=data).text
         return res
 
     def run_main(self, url, method, data=None):
@@ -21,11 +21,12 @@ class RunMain:
 
 
 if __name__ == '__main__':
+    run = RunMain()
     url = 'http://www.imooc.com/m/web/shizhanapi/loadmorepingjia.html?cart=11'
     data = {
         'cart': '11'
     }
-    run = RunMain(url, 'GET', data)
-    print(run.res)
-    unittest
+    run = run.run_main(url, 'GET', data)
+    print(run)
+
 # print run.run_main(url,'GET',data)
