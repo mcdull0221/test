@@ -1,6 +1,7 @@
 import requests
 import json
 
+
 class RunMain:
 
     def send_get(self, url, data):

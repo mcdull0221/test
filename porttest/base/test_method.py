@@ -7,20 +7,11 @@ import os
 
 class PortTest(unittest.TestCase):
 
-    @classmethod
-    def setUpClass(cls):
-        cls.run = RunMain()
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
-
     def setUp(self):
-        pass
+        self.run = RunMain()
 
     def tearDown(self):
         pass
-
 
     def test_01(self):
         url = 'http://coding.imooc.com/api/cate'
@@ -33,13 +24,14 @@ class PortTest(unittest.TestCase):
             'cid': '0',
             # 'errorCode': 1007
         }
+        str = '"errorCode":1007'
         res = self.run.run_main(url, 'POST', data)
         print(res)
-        self.assertIn('"errorCode":1007', res)
-        globals()['userid'] = 1000909
+        self.assertIn(str, res)
+        # globals()['userid'] = 1000909
 
     def test_02(self):
-        print(globals())
+        # print(globals())
         url = 'http://coding.imooc.com/api/cate'
         data = {
             'timestamp': '1507034803124',
@@ -64,6 +56,6 @@ if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTest(PortTest('test_01'))
     suite.addTest(PortTest('test_02'))
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    unittest.TextTestRunner().run(suite)
     # runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='test')
     # runner.run(suite)
