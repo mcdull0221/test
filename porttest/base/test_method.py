@@ -4,6 +4,7 @@ import json
 import HTMLTestRunner
 import os
 from mock import mock
+from base.mock_dome import MockDemo
 
 
 class PortTest(unittest.TestCase):
@@ -63,10 +64,8 @@ class PortTest(unittest.TestCase):
             'errorCode': 1001
         }
         # self.run.run_main = mock.Mock(return_value=data)
-        mock_data = mock.Mock(return_value=data)
-        self.run.run_main = mock_data
-        # res = mock_test(self.run.run_main, data, url, "POST", data)
-        res = self.run.run_main(url, 'POST', data)
+        res = MockDemo().mock_test(self.run.run_main, data, url, "POST", data)
+        # res = self.run.run_main(url, 'POST', data)
         print(res)
         self.assertEqual(res['errorCode'], 1001, "测试失败")
 
