@@ -6,7 +6,31 @@ PATH = lambda p: os.path.abspath(
 )
 
 
-data = xlrd.open_workbook('../dataconfig/case1.xls')
-tables = data.sheets()[0]
-print(tables.nrows)
-print(tables.cell_value(2, 3))
+class OperationExcel:
+    def __init__(self, file_path=None, sheet_id=None):
+        if file_path:
+            self.file_path = file_path
+            self.sheet_id = sheet_id
+            self.data = self.get_data()
+        else:
+            self.file_path = '../dataconfig/case1.xls'
+            self.sheet_id = 0
+
+    def get_data(self):
+        data = xlrd.open_workbook(self.file_path)
+        tables = data.sheets()[self.sheet_id]
+        return tables
+
+    def get_lines(self):
+        """获取行数"""
+        tables = self.get_data()
+        return tables.nrows
+
+    def get_cell(self, row, col):
+        return self.data.cell_value(row, col)
+
+
+if __name__ == '__main__':
+    opers = OperationExcel()
+    print(opers.get_lines())
+    print(opers.get_cell(1, 3))
