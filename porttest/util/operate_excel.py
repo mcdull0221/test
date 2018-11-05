@@ -16,6 +16,7 @@ class OperationExcel:
             self.file_path = '../dataconfig/case1.xls'
             self.sheet_id = 0
 
+    # 获取Excel数据
     def get_data(self):
         data = xlrd.open_workbook(self.file_path)
         tables = data.sheets()[self.sheet_id]
@@ -26,6 +27,7 @@ class OperationExcel:
         tables = self.get_data()
         return tables.nrows
 
+    # 获取某一个单元格的内容
     def get_cell(self, row, col):
         return self.data.cell_value(row, col)
 
